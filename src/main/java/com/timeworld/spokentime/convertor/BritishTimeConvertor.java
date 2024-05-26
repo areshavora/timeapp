@@ -71,7 +71,7 @@ public class BritishTimeConvertor {
             if (ones == 0) {
                 return TENS[tens];
             } else {
-                return TENS[tens] + "-" + NUMBERS[ones];
+                return TENS[tens] + " " + NUMBERS[ones];
             }
         }
     }

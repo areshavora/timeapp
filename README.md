@@ -17,13 +17,25 @@ Supported spoken conversions list:
 - Includes TestNG tests for validation.
 
 ### British Spoken words:
-| Time | Spoken words |
-| --- | --- |
-| 1:00 | one o'clock |
-| 2:05 | five past two |
-| 3:10 | ten past three |
-| 4:15 | quarter past four |
-| 5:20 | twenty past five |
+| Time  | Spoken words |
+|-------| --- |
+| 1:00  | one o'clock |
+| 2:05  | five past two |
+| 3:10  | ten past three |
+| 4:15  | quarter past four |
+| 5:20  | twenty past five |
+| 6:25  | twenty five past six |
+| 6:32  | six thirty two |
+| 7:30  | half past seven |
+| 7:35  | twenty five to eight |
+|8:40 | twenty to nine |
+|9:45 | quarter to ten |
+|10:50 | ten to eleven |
+| 11:55 | five to twelve |
+| 00:00 | midnight |
+| 12:00 | noon |
+| 13:00 | one o'clock |
+| 23: 59 | eleven fifty nine |
 
 
 ## Requirements
@@ -35,7 +47,7 @@ Supported spoken conversions list:
 1. **Clone the repository:**
     ```sh
     git clone https://github.com/areshavora/timeapp.git
-    cd time-app
+    cd timeapp
     ```
 
 2. **Build the project:**
@@ -74,7 +86,7 @@ TimeApp
 │   │   ├── java
 │   │   │   └── com
 │   │   │       └── timeworld
-│   │   │           └── TestSpokenTime.java
+│   │   │           └── TestBritishSpokenTime.java
 ├── output
 │   └── time-world-app-1.0.jar
 ├── pom.xml
@@ -93,7 +105,7 @@ TimeApp
     * Class responsible for converting time to British spoken words format with consideration of handling of edge cases of various hour and minute values.
 
 
-4. `src/test/java/com/timeworld/TestSpokenTime.java`
+4. `src/test/java/com/timeworld/TestBritishSpokenTime.java`
     * TestNG test class for testing the time conversion logic. At present verify inputs corresponds to supported British conversion only.
 
 5. `output/time-world-app.jar`
