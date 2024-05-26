@@ -58,7 +58,7 @@ Supported spoken conversions list:
 3. **Run the application:**
    The JAR file will be created in the `output` directory within the project root. Use the following command to run the application:
     ```sh
-    java -jar output/time-world-app.jar
+    java -jar output/time-world-app-1.0.jar
     ```
 
 4. **Test the project:**
