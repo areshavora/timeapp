@@ -1,15 +1,8 @@
 package com.timeworld.spokentime.convertor;
 
 /* class responsible for converting to hour and minute input to british spoken words. */
-public class BritishTimeConvertor {
-    private static final String[] NUMBERS = {
-            "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-            "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
-    };
+public class BritishTimeConvertor extends TimeConvertor {
 
-    private static final String[] TENS = {
-            "", "", "twenty", "thirty", "forty", "fifty"
-    };
 
 
     /**
@@ -22,6 +15,7 @@ public class BritishTimeConvertor {
      * 23:60 is null  <br>
      * 1:-1 null [ if given hour or minute is not in expected range of valid 24-hour format then method return null] </p>
      */
+    @Override
     public String timeToSpokenWords(int hour, int minute) {
         if (!isValidHour(hour) || !isValidMinute(minute)) {
             return null; // Invalid time format
@@ -53,34 +47,7 @@ public class BritishTimeConvertor {
     }
 
 
-    public String convertHourToWords(int hour) {
-        return convertToWords(hour % 12 == 0 ? 12 : hour % 12);
-    }
-
-    public String convertMinuteToWords(int min) {
-        return convertToWords(min);
-    }
 
 
-    private static String convertToWords(int num) {
-        if (num < 20) {
-            return NUMBERS[num];
-        } else {
-            int tens = num / 10;
-            int ones = num % 10;
-            if (ones == 0) {
-                return TENS[tens];
-            } else {
-                return TENS[tens] + " " + NUMBERS[ones];
-            }
-        }
-    }
 
-    private static boolean isValidHour(int hour) {
-        return hour >= 0 && hour <= 23;
-    }
-
-    private static boolean isValidMinute(int minute) {
-        return minute >= 0 && minute <= 59;
-    }
 }

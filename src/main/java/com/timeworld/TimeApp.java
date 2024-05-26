@@ -1,6 +1,7 @@
 package com.timeworld;
 
 import com.timeworld.spokentime.SpokenTimeConvertor;
+import com.timeworld.spokentime.SupportedSpokenConversion;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Scanner;
@@ -15,17 +16,20 @@ public class TimeApp {
         Scanner scanner = null;
         try {
             System.out.println("================ Welcome to TimeApp! ================");
-            System.out.println("---------- British Spoken Time Conversion ----------");
-
+            System.out.println("---------- Time to Spoken Words Conversion ---------- ");
+            System.out.print("Select conversion option [Press 1: For British Spoken Words (Default), Press 2: Germany Spoken Time ] :");
+            scanner = new Scanner(System.in);
+            String conversionOption = scanner.nextLine();
+            SupportedSpokenConversion spokenConversion = getSupportedSpokenConversion(conversionOption);
             do {
+
                 System.out.print("Enter the time in hour:minute format (24 hour HH:MM) [Press q/Q to exit from application] :");
-                scanner = new Scanner(System.in);
                 String inputTime = scanner.nextLine();
                 if (StringUtils.isNotBlank(inputTime) && inputTime.equalsIgnoreCase("q")) {
                     break;
                 }
                 SpokenTimeConvertor spokenTimeConvertor = new SpokenTimeConvertor();
-                spokenTimeConvertor.printSpokenWordsOfTime(inputTime);
+                spokenTimeConvertor.printSpokenWordsOfTime(inputTime,spokenConversion);
 
             } while (true);
             System.out.println("================ Application Terminated! ================");
@@ -34,6 +38,16 @@ public class TimeApp {
                 scanner.close();
             }
         }
+    }
+
+    private static SupportedSpokenConversion getSupportedSpokenConversion(final String conversionOption) {
+        SupportedSpokenConversion spokenConversion =  SupportedSpokenConversion.BRITISH;
+        if( StringUtils.isBlank(conversionOption) || (!conversionOption.equals("1") && !conversionOption.equals("2"))){
+            System.out.println("Selected option is not supported!, So, considering default option");
+        }else if(conversionOption.equals(SupportedSpokenConversion.GERMANY.getOption())) {
+            spokenConversion = SupportedSpokenConversion.GERMANY;
+        }
+        return spokenConversion;
     }
 
 }

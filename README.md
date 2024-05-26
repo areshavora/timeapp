@@ -8,7 +8,8 @@ At present, TimeApp application supports the conversion of given time in 24-hour
 
 Supported spoken conversions list:
 
-* British Spoken words
+* British Spoken words (Default conversion option)
+* Germany Spoken words (Yet to implement)
 
 ## Features
 - Converts time in 24-hour format to British spoken words.
@@ -80,13 +81,18 @@ TimeApp
 │   │   │           ├── spokentime
 │   │   │           │   └── convertor
 │   │   │           │       └── BritishTimeConvertor.java
+│   │   │           │       └── GermanyTimeConvertor.java
+│   │   │           │       └── TimeConvertor.java
+│   │   │           │   └── SpokenConversionFactory.java
 │   │   │           │   └── SpokenTimeConvertor.java
+│   │   │           │   └── SupportedSpokenConversion.java (Enum)
 │   │   │           ├── TimeApp.java
 │   ├── test
 │   │   ├── java
 │   │   │   └── com
 │   │   │       └── timeworld
 │   │   │           └── TestBritishSpokenTime.java
+│   │   │           └── TestGermanySpokenTime.java
 ├── output
 │   └── time-world-app-1.0.jar
 ├── pom.xml
@@ -98,23 +104,28 @@ TimeApp
 1. `src/main/java/com/timeworld/TimeApp.java`
     * The main application class that reads input from the console and uses SpokenTimeConvertor to output the spoken time.
 
-3. `src/main/java/com/timeworld/spokentime/SpokenTimeConvertor.java`
+2`src/main/java/com/timeworld/spokentime/SpokenTimeConvertor.java`
     * Validated input and Uses time conversion classes and print the converted time to words to console.
 
-2. `src/main/java/com/timeworld/spokentime/convertor/BritishTimeConvertor.java`
-    * Class responsible for converting time to British spoken words format with consideration of handling of edge cases of various hour and minute values.
+3`src/main/java/com/timeworld/spokentime/SupportedSpokenConversion.java`
+   * Supported conversion enum class, at present two conversion type requires to supported, one is British and second one is Germany. BritishTimeConvertor already implemented.
+   
+4`src/main/java/com/timeworld/spokentime/convertor/TimeConvertor.java`
+   * Base class providing the common methods and methods which requires to be implemented by underlying children class to convert time to desire spoken language.
 
+5`src/main/java/com/timeworld/spokentime/convertor/BritishTimeConvertor.java`
+    * Class responsible for converting time to British spoken words format with consideration of handling of edge cases of various hour and minute values. Similarly, other convertor class is GermanyTimeConvertor.
 
-4. `src/test/java/com/timeworld/TestBritishSpokenTime.java`
-    * TestNG test class for testing the time conversion logic. At present verify inputs corresponds to supported British conversion only.
+6`src/test/java/com/timeworld/TestBritishSpokenTime.java`
+    * TestNG test class for testing the time conversion logic. At present verify inputs corresponds to supported British conversion only. Other class TestGermanySpokenTime is yet to implement.
 
-5. `output/time-world-app.jar`
+7`output/time-world-app.jar`
     * The executable JAR file generated after building the project.
 
-6. `pom.xml`
+8`pom.xml`
     * The Maven project file that includes project dependencies, build plugins, and other configurations.
 
-7. `README.txt`
+9`README.txt`
     * Explain application structure its usages and how to run or test.
 
 
